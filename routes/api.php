@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RedisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post("test", function (Request $request) {
     return ["id" => 1];
+});
+
+Route::controller(RedisController::class)->group(function () {
+    Route::get("set", "set");
+    Route::get("get", "get");
 });
