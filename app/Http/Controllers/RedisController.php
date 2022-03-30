@@ -14,6 +14,6 @@ class RedisController extends Controller
     }
     public function get(Request $request)
     {
-        return typeOf(Redis::get("abc"));
+        dd(Redis::get("abc"));
     }
 }
