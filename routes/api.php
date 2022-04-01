@@ -21,11 +21,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::any("test", function (Request $request) {
-    if ($user =  User::find(25)) {
+    if ($user =  User::find(5)) {
         return $user;
     } else {
-        return User::create(["name" => "123", "email" => random_int(0, 999999) . "v01345@163.com", "password" => encrypt("jifes")]);
+        return User::create(["name" => "123", "email" => random_int(0, 999999) . "@163.com", "password" => encrypt("jifes")]);
     }
+});
+
+Route::any("users", function () {
+    return User::all();
 });
 
 Route::controller(RedisController::class)->group(function () {
