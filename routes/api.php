@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RedisController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post("test", function (Request $request) {
-    return ["id" => 1];
+    if ($user =  User::find(1)) {
+        return $user;
+    } else {
+        return User::create(["name" => "123", "email" => "v01345@163.com", "password" => encrypt("jifes")]);
+    }
 });
 
 Route::controller(RedisController::class)->group(function () {
