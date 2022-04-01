@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::any("test", function (Request $request) {
+    return 1;
     if ($user =  User::find(1)) {
         return $user;
     } else {
