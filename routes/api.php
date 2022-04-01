@@ -21,8 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::any("test", function (Request $request) {
-    return 1;
-    if ($user =  User::find(1)) {
+    if ($user =  User::find(2)) {
         return $user;
     } else {
         return User::create(["name" => "123", "email" => "v01345@163.com", "password" => encrypt("jifes")]);
