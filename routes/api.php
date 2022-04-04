@@ -3,6 +3,7 @@
 use App\Http\Controllers\RedisController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::any("test", function (Request $request) {
-    if ($user =  User::find(10)) {
-        return $user;
-    } else {
-        return User::create(["name" => "123", "email" => random_int(0, 999999) . "@163.com", "password" => encrypt("jifes")]);
-    }
+    return Redis::command("CONFIG GET *");
+    // if ($user =  User::find(10)) {
+    //     return $user;
+    // } else {
+    //     return User::create(["name" => "123", "email" => random_int(0, 999999) . "@163.com", "password" => encrypt("jifes")]);
+    // }
 });
 
 Route::any("users", function () {
